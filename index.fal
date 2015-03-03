@@ -1,0 +1,19 @@
+title: Welcome to the Reformed Fallacy Recognition Manual
+
+This fallacy-recognition manual is said to be "reformed" in that
+instead of blindly importing every traditional fallacy, the list
+of fallacies is carefully examined to be more systematic, precise,
+and, well, objective. This is as part of a \i:larger\x: effort
+of reform of discursive logic.
+
+This is sort of a wiki - but not one that uses a traditional
+web-based editing format. Instead, contributors edit documents
+in a \ll:tech/flexible_authoring_language\lt:new authoring language\lx:
+designed for this wiki and synchronize
+it with \ll:tech/git\lt:Git\lx:.
+Eventually, the plan is to develop a rendering engine that will
+translate the whole wiki-project to HTML or PHP so that they can be viewed
+by those who are not so inclined to read it in the format that it is
+edited in. And even though the editing isn't done through a web-interface
+like most wikis are, and there are no specific \i:plans\x: for \i:developing\x:
+a web-interface for editing - that possibility isn't ruled out either.

@@ -1,0 +1,103 @@
+title: Flexible Authoring Language
+
+This documentation of Flexible Authoring Language is a work-in-progress --
+not yet complete -- but still (hopefully) useful.
+This documentation is useful for two groups of people:
+
+\lis-ol:individuals who wish to author and/or edit documents
+in this format.
+
+\lis-i:individuals who wish to read these documents in their native format.
+
+\lis-i:anyone who wishes to implement a rendering engine to translate
+these documents into an easier-to-read format.
+
+\lis-x:
+
+\sec:1: Classes of Coding Erros and Anomalies
+
+Many violations of this coding specification could be regarded as "coding errors" -
+yet not all of them should be treated equally. It is recommended that anyone
+designing a rendering engine for this language allow the user to specify the
+tolerance level at which the engine runs.
+
+At a certain point on the continuum, deviations from code orthodoxy cease
+to be referred to as "Coding Errors" but as "Coding Anomalies".
+This means to refer to quirks that aren't necessary coding errors at all.
+Unless the user specifically specifies so, there is no need to invalidate
+a page on account of one of those - or necessarily to even warn the user.
+
+\sec:2: Class 1 Coding Errors
+
+This means that there is a violation of the document format that is so
+egregious that the rendering engine should throw a fatal-error rather than
+continue rendering the page. In short - it is an error that must be fixed
+if the page is to be considered valid at all.
+
+No rendering engine should allow a page to be rendered if an error like
+this occurs --- and if it is being used to render the entire wiki project,
+it should at least make sure that the user knows that the specific page
+in question has said error.
+
+\sec:2: Class 2 Coding Errors
+
+Errors of these types do not completely invalidate the page - but
+it is generally regarded as errors that there is no excuse for -
+and therefore should be treated the same as Class 1 Coding Errors
+in all \i:except\x: the most tolerant of rendering modes.
+
+\sec:2: Class 5 Coding Anomilaes
+
+Could very well just be in-house specifics - no cause for alarm,
+let alone invalidation, in all but the pickiest of modes.
+
+
+\sec:1:Empty vs. Non-Empty Lines and Empty Blocks
+
+A line is regarded as "empty" if it is devoid of any printable characters.
+That is, if from one newline character to the next, not a single character
+can be found that would pass the test of C's \i:isgraph()\x: function.
+An empty line \i:can\x: be two newline characters in a row - but does not
+necessarily have to be, as long as none of the characters in-between are
+printable.
+
+What is referred to as an "Empty Block" is one or more empty lines that occur
+one after the other, without any non-empty lines in-between.
+
+Some escape sequences also imply and/or negate Empty Blocks
+that immediately precede and/or follow said escape sequence -
+whether an Empty Block is actually there or not.
+
+\sec:1:Header Section
+
+The beginning of each file is the header section.
+The header section is ended the first time
+Each line
+begins with the name of a header-field, followed by a colon,
+one blank-space character, and then the contents of that header-field.
+All lines in the header section that do not fit this description will be ignored
+- and will be regarded as Class 2 Coding Errors.
+
+The header-section lasts until the occurrence of the first Empty Block
+in the file - after which the body section of the file begins.
+However, this particular Empty Block can not be one that is only
+there as a result of implication by an Escape Sequence, but must be
+actually there. Furthermore, if there actually \i:is\x: an Empty
+Block at a point that would end the header section it will do so - even
+if it otherwise would have been \i:negated\x: by an Escape Sequence.
+
+
+If there are two or more header-lines specifying the same field-name,
+then the description of what that particular field-name means will
+determine the behavior. Some field-specifications may allow for lists
+(in which case, each instance of the field-name will be an item on that
+list) while others may not allow it.
+
+An occurrence of an unrecognized field-name will result in a Class 5
+Coding Anomaly.
+
+By the way - the field-names of header-lines are case-sensitive - as
+are all other things in this file-format unless specified otherwise.
+
+
+
